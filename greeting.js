@@ -3,25 +3,25 @@ const form = document.querySelector(".js-form"), //찾은 첫번째 것을 가�
     greeting = document.querySelector(".js-greetings");
 
 const USER_LS = "currentUser"
-    SHOWING_CN = "showing";
+SHOWING_CN = "showing";
 
-function saveName(text){
+function saveName(text) {
     localStorage.setItem(USER_LS, text);
 }
 
-function handleSubmit(event){
+function handleSubmit(event) {
     event.preventDefault();
     const currentValue = input.value;
     paintGreeting(currentValue)
     saveName(currentValue);
 }
 
-function askForName(){
+function askForName() {
     form.classList.add(SHOWING_CN);
     form.addEventListener("submit", handleSubmit)
 }
 
-function paintGreeting(text){
+function paintGreeting(text) {
     form.classList.remove(SHOWING_CN);
     greeting.classList.add(SHOWING_CN);
     greeting.innerText = `Hello ${text}`
@@ -29,14 +29,14 @@ function paintGreeting(text){
 
 function loadName() {
     const currentUser = localStorage.getItem(USER_LS);
-    if(currentUser === null){ //유저 없음
+    if (currentUser === null) { //유저 없음
         askForName();
     } else { //유저 있음 
         paintGreeting(currentUser);
     }
 }
 
-function init(){
+function init() {
     loadName();
 }
 
